@@ -1,0 +1,17 @@
+<?php
+use Drupal\vtmodule\Controller\VTModuleController;
+
+/**
+ * Implement template_preprocess_page
+ */
+function vttest_preprocess_page(&$variables)
+{
+  $route_name = \Drupal::service('current_route_match')->getRouteName();
+  $uri_path = \Drupal::service('path.current')->getPath();
+
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $vtmodule_controller = new VTModuleController();
+    $variables['events'] = $vtmodule_controller->renderEventsListBlock();
+    $variables['news'] = $vtmodule_controller->renderNewsListBlock();
+  }
+}

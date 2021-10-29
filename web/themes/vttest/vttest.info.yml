@@ -1,0 +1,16 @@
+type: theme
+base theme: false
+core_version_requirement: ^8 || ^9
+
+name: vttest
+description: 'VT test theme'
+
+libraries:
+  - vttest/global-styling
+
+regions:
+  navigation: 'Navigation'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_right: 'Sidebar Right'

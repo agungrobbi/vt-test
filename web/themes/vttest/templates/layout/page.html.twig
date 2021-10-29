@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ *
+ * @ingroup templates
+ */
+#}
+
+{# Header #}
+<header>
+  {% include '@vttest/layout/header.html.twig' %}
+</header>
+
+{# Main #}
+{% block main %}
+  <div role="main">
+    <div class="row">
+      {# Highlighted #}
+      {% if page.highlighted %}
+        {% block highlighted %}
+          <div class="highlighted col-sm-12">
+            <div class="panel panel-default">
+              <div class = "panel-body">
+                {{ page.highlighted }}
+              </div>
+            </div>
+          </div>
+        {% endblock %}
+      {% endif %}
+
+      {# Content #}
+      {%
+        set content_classes = [
+          page.sidebar_right ? 'col-sm-9',
+          page.sidebar_right is empty ? 'col-sm-12'
+        ]
+      %}
+      <section{{ content_attributes.addClass(content_classes) }}>
+
+        {# Help #}
+        {% if page.help %}
+          {% block help %}
+            {{ page.help }}
+          {% endblock %}
+        {% endif %}
+
+        {# Content #}
+        {% block content %}
+          <a id="main-content"></a>
+          {{ page.content }}
+        {% endblock %}
+      </section>
+
+      {# Sidebar Right #}
+      {% if page.sidebar_right %}
+        {% block sidebar_right %}
+          <aside class="col-sm-3" role="complementary">
+            {{ page.sidebar_right }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+<footer>
+</footer>

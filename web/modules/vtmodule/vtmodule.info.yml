@@ -1,0 +1,4 @@
+type: module
+name: VT Test
+description: Custom module for the test
+core_version_requirement: ^8.8 || ^9

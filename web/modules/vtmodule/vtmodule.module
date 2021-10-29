@@ -1,0 +1,14 @@
+<?php
+
+function vtmodule_theme() {
+  return [
+    'events_list'=>[
+      'template' => 'events-list',
+      'variables' => ['events' => NULL]
+    ],
+    'news_list'=>[
+      'template' => 'news-list',
+      'variables' => ['news' => NULL]
+    ],
+  ];
+}
